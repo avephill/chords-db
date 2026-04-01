@@ -4,6 +4,7 @@ import { default as mandolin } from './db/mandolin';
 import { default as ukuleleDTuning} from './db/ukulele-d-tuning';
 import { default as ukuleleBaritone } from './db/ukulele-baritone';
 import { default as banjoOpenG } from './db/banjo-open-g';
+import { default as banjoDoubleC } from './db/banjo-double-c';
 
 export default {
   guitar,
@@ -11,5 +12,6 @@ export default {
   mandolin,
   "ukulele-d-tuning": ukuleleDTuning,
   "ukulele-baritone": ukuleleBaritone,
-  "banjo-open-g": banjoOpenG
+  "banjo-open-g": banjoOpenG,
+  "banjo-double-c": banjoDoubleC
 };

@@ -1,10 +1,18 @@
-export default {
+﻿export default {
   key: 'C#',
   suffix: 'major',
   positions: [
     {
-      frets: '03123',
-      fingers: '03124',
+      frets: 'x3123',
+    },
+    {
+      frets: 'x6666',
+    },
+    {
+      frets: 'xba9b',
+    },
+    {
+      frets: 'xx666',
     },
   ],
 };

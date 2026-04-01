@@ -1,4 +1,4 @@
-import major from './major';
+﻿import major from './major';
 import minor from './minor';
 import dim from './dim';
 import dim7 from './dim7';

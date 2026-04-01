@@ -1,9 +1,12 @@
-export default {
+﻿export default {
   key: 'C',
   suffix: 'madd9',
   positions: [
     {
       frets: '05540',
+    },
+    {
+      frets: '0a88c',
     },
   ],
 };

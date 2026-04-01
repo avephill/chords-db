@@ -1,10 +1,15 @@
-export default {
+﻿export default {
   key: 'B',
   suffix: '7',
   positions: [
     {
-      frets: '04443',
-      fingers: '01112',
+      frets: 'x1204',
+    },
+    {
+      frets: 'x9877',
+    },
+    {
+      frets: 'xx447',
     },
   ],
 };

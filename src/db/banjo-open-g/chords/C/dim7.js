@@ -1,9 +1,12 @@
-export default {
+﻿export default {
   key: 'C',
   suffix: 'dim7',
   positions: [
     {
-      frets: 'x1214',
+      frets: 'a7877',
+    },
+    {
+      frets: 'xa877',
     },
   ],
 };

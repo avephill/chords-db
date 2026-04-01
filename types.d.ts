@@ -45,6 +45,7 @@ export const mandolin: InstrumentChords;
 export const ukuleleDTuning: InstrumentChords;
 export const ukuleleBaritone: InstrumentChords;
 export const banjoOpenG: InstrumentChords;
+export const banjoDoubleC: InstrumentChords;
 
 export interface IChordsDB {
     guitar: InstrumentChords;
@@ -53,6 +54,7 @@ export interface IChordsDB {
     "ukulele-d-tuning": InstrumentChords;
     "ukulele-baritone": InstrumentChords;
     "banjo-open-g": InstrumentChords;
+    "banjo-double-c": InstrumentChords;
 }
 
 declare const ChordsDB: IChordsDB;

@@ -1,10 +1,15 @@
-export default {
+﻿export default {
   key: 'Eb',
   suffix: 'minor',
   positions: [
     {
-      frets: '01342',
-      fingers: '01342',
+      frets: 'x4344',
+    },
+    {
+      frets: 'x8878',
+    },
+    {
+      frets: 'xx878',
     },
   ],
 };
