@@ -1,0 +1,10 @@
+export default {
+  key: 'Eb',
+  suffix: 'minor',
+  positions: [
+    {
+      frets: '1342',
+      fingers: '1342',
+    },
+  ],
+};

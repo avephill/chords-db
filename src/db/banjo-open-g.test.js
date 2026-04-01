@@ -1,0 +1,98 @@
+/* global it, describe, expect */
+
+import banjoOpenG from './banjo-open-g';
+import { strChord2array, processString } from '../tools';
+
+describe('Banjo (open G) Chords', () => {
+  describe('Strings', () => {
+    it('Should have 4 strings', () =>
+      expect(banjoOpenG.main.strings).toEqual(4));
+    it('Should have 4 frets on chord', () =>
+      expect(banjoOpenG.main.fretsOnChord).toEqual(4));
+  });
+
+  describe('Types', () => {
+    banjoOpenG.suffixes.map((suffix) =>
+      it(`Type suffix ${suffix} should have a description`, () =>
+        expect(suffix).toBeDefined())
+    );
+  });
+
+  describe('G major', () => {
+    it('Should have positions with 4-string frets', () => {
+      const Gmajor = banjoOpenG.chords.G.find(
+        (chord) => chord.suffix === 'major'
+      );
+      expect(Gmajor.positions.length).toBeGreaterThan(0);
+      Gmajor.positions.forEach((position) => {
+        const frets = Array.isArray(position.frets)
+          ? position.frets
+          : strChord2array(position.frets);
+        expect(frets.length).toEqual(4);
+        expect(Math.max(...frets)).toBeLessThan(16);
+      });
+    });
+  });
+
+  Object.keys(banjoOpenG.chords).map((key) =>
+    describe(`Key ${key}`, () => {
+      const chords = banjoOpenG.chords[key];
+
+      it(`Should not have duplicated suffixes`, () => {
+        const seen = new Set();
+        const duplicates = chords.some(
+          (chord) => seen.size === seen.add(chord.suffix).size
+        );
+        expect(duplicates).toBe(false);
+      });
+
+      chords.map((chord) =>
+        describe(`Suffix ${chord.key}${chord.suffix}`, () => {
+          describe('General properties', () => {
+            it(`The chord ${key}${chord.suffix} should have a defined key property`, () =>
+              expect(chord.key).toEqual(key));
+            it(`The chord ${key}${chord.suffix} should have a defined suffix property`, () =>
+              expect(chord.suffix).toBeDefined());
+            it(`The chord ${key}${chord.suffix} should have a list of positions`, () =>
+              expect(chord.positions).toBeInstanceOf(Array));
+          });
+
+          describe('Positions', () => {
+            chord.positions.map((position, index) => {
+              const frets = Array.isArray(position.frets)
+                ? position.frets
+                : strChord2array(position.frets);
+              const effectiveFrets = frets.filter((f) => f > 0);
+              describe('Frets', () => {
+                it(`The ${index + 1} position frets array should have 4 values`, () =>
+                  expect(frets.length).toEqual(4));
+                it(`The ${index + 1} position frets array should have values lower than 16`, () =>
+                  expect(Math.max(...frets)).toBeLessThan(16));
+                it(`The ${index + 1} position frets array should have at most 4 frets of distance`, () =>
+                  expect(
+                    effectiveFrets.length === 0
+                      ? 0
+                      : Math.max(...effectiveFrets) - Math.min(...effectiveFrets)
+                  ).toBeLessThanOrEqual(banjoOpenG.main.fretsOnChord));
+              });
+
+              if (position.fingers) {
+                describe('Fingers', () => {
+                  const fingers = Array.isArray(position.fingers)
+                    ? position.fingers
+                    : processString(position.fingers);
+                  it(`The ${index + 1} position fingers array should have 4 values`, () =>
+                    expect(fingers.length).toEqual(4));
+                  it(`The ${index + 1} position fingers array should have values lower than 5`, () =>
+                    expect(Math.max(...fingers)).toBeLessThan(5));
+                  it(`The ${index + 1} position fingers array should have values higher or equal to 0`, () =>
+                    expect(Math.min(...fingers)).toBeGreaterThanOrEqual(0));
+                });
+              }
+            });
+          });
+        })
+      );
+    })
+  );
+});
