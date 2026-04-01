@@ -1,5 +1,5 @@
 export default {
   key: 'E',
   suffix: 'm7',
-  positions: [{ frets: '2000', fingers: '2000' }],
+  positions: [{ frets: '02000', fingers: '02000' }],
 };

@@ -1,0 +1,9 @@
+export default {
+  key: 'C',
+  suffix: '7b9',
+  positions: [
+    {
+      frets: 'xa9bb',
+    },
+  ],
+};

@@ -1,5 +1,5 @@
 export default {
-  strings: 4,
-  fretsOnChord: 4,
+  strings: 5,
+  fretsOnChord: 5,
   name: 'banjo-open-g',
 };

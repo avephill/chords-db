@@ -3,8 +3,8 @@ export default {
   suffix: 'minor',
   positions: [
     {
-      frets: '1101',
-      fingers: '1102',
+      frets: '01101',
+      fingers: '01102',
     },
   ],
 };

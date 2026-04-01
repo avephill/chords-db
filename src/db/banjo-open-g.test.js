@@ -5,10 +5,10 @@ import { strChord2array, processString } from '../tools';
 
 describe('Banjo (open G) Chords', () => {
   describe('Strings', () => {
-    it('Should have 4 strings', () =>
-      expect(banjoOpenG.main.strings).toEqual(4));
-    it('Should have 4 frets on chord', () =>
-      expect(banjoOpenG.main.fretsOnChord).toEqual(4));
+    it('Should have 5 strings', () =>
+      expect(banjoOpenG.main.strings).toEqual(5));
+    it('Should have 5 frets on chord', () =>
+      expect(banjoOpenG.main.fretsOnChord).toEqual(5));
   });
 
   describe('Types', () => {
@@ -19,7 +19,7 @@ describe('Banjo (open G) Chords', () => {
   });
 
   describe('G major', () => {
-    it('Should have positions with 4-string frets', () => {
+    it('Should have positions with 5-string frets', () => {
       const Gmajor = banjoOpenG.chords.G.find(
         (chord) => chord.suffix === 'major'
       );
@@ -28,7 +28,7 @@ describe('Banjo (open G) Chords', () => {
         const frets = Array.isArray(position.frets)
           ? position.frets
           : strChord2array(position.frets);
-        expect(frets.length).toEqual(4);
+        expect(frets.length).toEqual(5);
         expect(Math.max(...frets)).toBeLessThan(16);
       });
     });
@@ -64,11 +64,11 @@ describe('Banjo (open G) Chords', () => {
                 : strChord2array(position.frets);
               const effectiveFrets = frets.filter((f) => f > 0);
               describe('Frets', () => {
-                it(`The ${index + 1} position frets array should have 4 values`, () =>
-                  expect(frets.length).toEqual(4));
+                it(`The ${index + 1} position frets array should have 5 values`, () =>
+                  expect(frets.length).toEqual(5));
                 it(`The ${index + 1} position frets array should have values lower than 16`, () =>
                   expect(Math.max(...frets)).toBeLessThan(16));
-                it(`The ${index + 1} position frets array should have at most 4 frets of distance`, () =>
+                it(`The ${index + 1} position frets array should have at most ${banjoOpenG.main.fretsOnChord} frets of distance`, () =>
                   expect(
                     effectiveFrets.length === 0
                       ? 0
@@ -81,8 +81,8 @@ describe('Banjo (open G) Chords', () => {
                   const fingers = Array.isArray(position.fingers)
                     ? position.fingers
                     : processString(position.fingers);
-                  it(`The ${index + 1} position fingers array should have 4 values`, () =>
-                    expect(fingers.length).toEqual(4));
+                  it(`The ${index + 1} position fingers array should have 5 values`, () =>
+                    expect(fingers.length).toEqual(5));
                   it(`The ${index + 1} position fingers array should have values lower than 5`, () =>
                     expect(Math.max(...fingers)).toBeLessThan(5));
                   it(`The ${index + 1} position fingers array should have values higher or equal to 0`, () =>
