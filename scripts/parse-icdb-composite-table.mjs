@@ -49,13 +49,14 @@ function stringGray(st) {
   return /^String_gray/i.test(st);
 }
 
-export function parseCompositeTableInnerHtml(tableInner) {
+export function parseCompositeTableInnerHtml(tableInner, stringCount = 5) {
   const trRe = /<tr\b[^>]*>(.*?)<\/tr>/gis;
   const rows = [];
   let m;
   while ((m = trRe.exec(tableInner)) !== null) {
     const trContent = m[1];
-    if (/NotFound5String/i.test(trContent)) continue;
+    if (stringCount === 5 && /NotFound5String/i.test(trContent)) continue;
+    if (stringCount === 4 && /NotFound4String/i.test(trContent)) continue;
     const tdRe = /<td\b[^>]*>(.*?)<\/td>/gis;
     const tds = [];
     let dm;
@@ -68,8 +69,12 @@ export function parseCompositeTableInnerHtml(tableInner) {
       }
     }
     if (tds.length === 0) continue;
-    if (tds.length === 6) rows.push(tds.slice(1));
-    else if (tds.length === 5) rows.push(tds);
+    if (stringCount === 5) {
+      if (tds.length === 6) rows.push(tds.slice(1));
+      else if (tds.length === 5) rows.push(tds);
+    } else if (stringCount === 4) {
+      if (tds.length === 4) rows.push(tds);
+    }
   }
   if (rows.length === 0) return null;
 
@@ -78,11 +83,11 @@ export function parseCompositeTableInnerHtml(tableInner) {
   const frLabel = firstTr && /TopFretName[^>]*>(\d+)\s*(?:&nbsp;)?>/i.exec(firstTr[1]);
   if (frLabel) fretOffset = parseInt(frLabel[1], 10);
 
-  const frets = Array(5).fill(null);
-  const fingers = Array(5).fill('0');
+  const frets = Array(stringCount).fill(null);
+  const fingers = Array(stringCount).fill('0');
 
   const nut = rows[0];
-  for (let c = 0; c < 5; c++) {
+  for (let c = 0; c < stringCount; c++) {
     const st = stem(nut[c]);
     if (nutMute(st)) {
       frets[c] = 'x';
@@ -106,7 +111,7 @@ export function parseCompositeTableInnerHtml(tableInner) {
     const fChar = fretToHexChar(fretNum);
     if (!fChar) return null;
 
-    for (let c = 0; c < 5; c++) {
+    for (let c = 0; c < stringCount; c++) {
       const st = stem(line[c]);
       if (stringGray(st)) {
         frets[c] = 'x';
@@ -139,7 +144,10 @@ export function parseCompositeTableInnerHtml(tableInner) {
 function main() {
   const inputPath = process.argv[2];
   const raw = inputPath ? readFileSync(inputPath, 'utf8') : readFileSync(0, 'utf8');
-  const out = parseCompositeTableInnerHtml(raw);
+  const sc = parseInt(process.argv[3], 10);
+  const stringCount =
+    Number.isFinite(sc) && sc >= 4 && sc <= 8 ? sc : 5;
+  const out = parseCompositeTableInnerHtml(raw, stringCount);
   process.stdout.write(out ? JSON.stringify(out) : 'null');
 }
 

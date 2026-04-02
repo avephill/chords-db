@@ -1,16 +1,21 @@
-# Parse ICDb _raw_v1..v4.html composite SingleFingering_v2 sprite tables -> chord *.js with frets + fingers (5 chars each).
+# Parse ICDb _raw_v1..v4.html composite SingleFingering_v2 sprite tables -> chord *.js with frets + fingers (one char per string).
 # See README: "Internet Chord Database (ICDb) banjo imports" for source site and StaticCharts vs composite forms.
 # Usage: powershell -File scripts/generate-banjo-icdb-composite.ps1 -InstrumentFolder banjo-open-c -ReadableSuffix openCBanjo
 #        powershell -File scripts/generate-banjo-icdb-composite.ps1 -InstrumentFolder banjo-standard-c-drop-c -ReadableSuffix standardCDropCBanjo
+#        powershell -File scripts/generate-banjo-icdb-composite.ps1 -InstrumentFolder plecturn-4-string-banjo-irish-tuning -ReadableSuffix irish4Banjo -StringCount 4
 
 param(
     [Parameter(Mandatory = $true)]
-    [ValidateSet("banjo-open-c", "banjo-standard-c-drop-c")]
+    [ValidateSet("banjo-open-c", "banjo-standard-c-drop-c", "plecturn-4-string-banjo-irish-tuning")]
     [string]$InstrumentFolder,
 
     [Parameter(Mandatory = $true)]
-    [ValidateSet("openCBanjo", "standardCDropCBanjo")]
-    [string]$ReadableSuffix
+    [ValidateSet("openCBanjo", "standardCDropCBanjo", "irish4Banjo")]
+    [string]$ReadableSuffix,
+
+    [Parameter(Mandatory = $false)]
+    [ValidateRange(4, 5)]
+    [int]$StringCount = 5
 )
 
 $ErrorActionPreference = "Stop"
@@ -145,7 +150,7 @@ function Invoke-CompositeTableParse([string]$tableInner) {
     $tmp = [System.IO.Path]::GetTempFileName() + ".html"
     try {
         [System.IO.File]::WriteAllText($tmp, $tableInner, [System.Text.UTF8Encoding]::new($false))
-        $json = & node $ParserScript $tmp 2>&1
+        $json = & node $ParserScript $tmp $StringCount 2>&1
         if ($LASTEXITCODE -ne 0) { return $null }
         $s = if ($json -is [System.Array]) { $json[-1] } else { [string]$json }
         if ($s -eq "null" -or [string]::IsNullOrWhiteSpace($s)) { return $null }

@@ -77,6 +77,7 @@ ICDb pages use two different voicing layouts; the import pipeline must match the
 | `banjo-d-tuning` | `download-banjo-d-tuning-icdb.ps1` | `generate-banjo-d-tuning-from-icdb.ps1` |
 | `banjo-double-c` | `download-banjo-double-c-icdb.ps1` (and `download-banjo-double-c-remaining.ps1` if used) | `generate-banjo-double-c-from-icdb.ps1` |
 | `banjo-gmodal-mountain-minor-sawmill` | `download-banjo-gmodal-mountain-minor-icdb.ps1` | `generate-banjo-gmodal-mountain-minor-from-icdb.ps1` |
+| `plecturn-4-string-banjo-irish-tuning` (tenor Irish G D A E, 4 strings) | `download-plecturn-4-string-banjo-irish-tuning-icdb.ps1` | `generate-plecturn-4-string-banjo-irish-tuning-icdb-composite.ps1` ([Tenor (4-String) Banjo Irish Tuning](https://internetchorddatabase.com/ChordCharts/Tenor_(4-String)_Banjo_Irish_Tuning/); composite sprites, `-StringCount 4`) |
 
 **Consistency check:** `node scripts/merge-banjo-composite-fingers.mjs` compares raw composite tables to existing chord files (fills missing `fingers` when fret strings match exactly; logs borderline `x`/open differences). It writes `scripts/composite-finger-merge-review.txt` (gitignored). If chord files were already generated from the same composite HTML, this usually updates nothing—only drift or hand-edits show up. For instruments whose chords came from **StaticCharts** alts, sprite-derived fret strings often do not match stored positions (different voicings or chart offset), so the script may update no files until those layouts are aligned in the generator.
 

@@ -51,6 +51,7 @@ export const banjoDTuning: InstrumentChords;
 export const banjoDFsharpTuning: InstrumentChords;
 export const banjoOpenC: InstrumentChords;
 export const banjoStandardCDropC: InstrumentChords;
+export const plecturn4StringBanjoIrishTuning: InstrumentChords;
 
 export interface IChordsDB {
     guitar: InstrumentChords;
@@ -65,6 +66,7 @@ export interface IChordsDB {
     "banjo-d-f#-tuning": InstrumentChords;
     "banjo-open-c": InstrumentChords;
     "banjo-standard-c-drop-c": InstrumentChords;
+    "plecturn-4-string-banjo-irish-tuning": InstrumentChords;
 }
 
 declare const ChordsDB: IChordsDB;

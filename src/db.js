@@ -10,6 +10,7 @@ import { default as banjoDTuning } from './db/banjo-d-tuning';
 import { default as banjoDFsharpTuning } from './db/banjo-d-f#-tuning';
 import { default as banjoOpenC } from './db/banjo-open-c';
 import { default as banjoStandardCDropC } from './db/banjo-standard-c-drop-c';
+import { default as plecturn4StringBanjoIrishTuning } from './db/plecturn-4-string-banjo-irish-tuning';
 
 export default {
   guitar,
@@ -23,5 +24,6 @@ export default {
   "banjo-d-tuning": banjoDTuning,
   "banjo-d-f#-tuning": banjoDFsharpTuning,
   "banjo-open-c": banjoOpenC,
-  "banjo-standard-c-drop-c": banjoStandardCDropC
+  "banjo-standard-c-drop-c": banjoStandardCDropC,
+  "plecturn-4-string-banjo-irish-tuning": plecturn4StringBanjoIrishTuning,
 };
