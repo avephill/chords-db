@@ -1,5 +1,6 @@
 /**
  * Parse ICDb _raw_v1..v4.html for banjo open-G and write chord *.js + index + readable txt.
+ * Same behaviour as generate-banjo-open-g-from-icdb.ps1 (StaticCharts alts); use whichever runtime you prefer.
  * Run: node scripts/generate-banjo-open-g-from-icdb.mjs
  */
 import fs from 'fs';

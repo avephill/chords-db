@@ -46,6 +46,11 @@ export const ukuleleDTuning: InstrumentChords;
 export const ukuleleBaritone: InstrumentChords;
 export const banjoOpenG: InstrumentChords;
 export const banjoDoubleC: InstrumentChords;
+export const banjoGModalMountainMinorSawmill: InstrumentChords;
+export const banjoDTuning: InstrumentChords;
+export const banjoDFsharpTuning: InstrumentChords;
+export const banjoOpenC: InstrumentChords;
+export const banjoStandardCDropC: InstrumentChords;
 
 export interface IChordsDB {
     guitar: InstrumentChords;
@@ -55,6 +60,11 @@ export interface IChordsDB {
     "ukulele-baritone": InstrumentChords;
     "banjo-open-g": InstrumentChords;
     "banjo-double-c": InstrumentChords;
+    "banjo-gmodal-mountain-minor-sawmill": InstrumentChords;
+    "banjo-d-tuning": InstrumentChords;
+    "banjo-d-f#-tuning": InstrumentChords;
+    "banjo-open-c": InstrumentChords;
+    "banjo-standard-c-drop-c": InstrumentChords;
 }
 
 declare const ChordsDB: IChordsDB;

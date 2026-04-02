@@ -35,3 +35,6 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+# ICDb composite merge review log (scripts/merge-banjo-composite-fingers.mjs)
+scripts/composite-finger-merge-review.txt
