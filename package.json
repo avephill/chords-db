@@ -7,7 +7,7 @@
   "scripts": {
     "test": "jest src",
     "stdout": "babel-node src/generate",
-    "build": "babel-node src/generate json",
+    "build": "babel-node src/generate json && node scripts/sync-chords-db-lib.mjs",
     "precommit": "lint-staged",
     "prepublish": "npm run build",
     "prettier": "prettier --single-quote --write \"src/**/*.{js,jsx}\""

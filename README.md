@@ -39,7 +39,7 @@ the project lifecycle are bound to it. Three basic commands
 yarn install
 yarn build
 ```
-Generates a new version of the library when new chords are added.
+(or `npm install` / `npm run build`) Generates `lib/*.json`, `lib/instruments.json`, and **`lib/index.js`** (aggregate re-export of every instrument JSON via `scripts/sync-chords-db-lib.mjs`). Commit those when you add instruments so `package.json` `"main": "lib/index.js"` stays complete for dependents.
 
 ```
 yarn test
