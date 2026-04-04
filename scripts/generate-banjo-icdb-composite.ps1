@@ -1,4 +1,5 @@
 # Parse ICDb _raw_v1..v4.html composite SingleFingering_v2 sprite tables -> chord *.js with frets + fingers (one char per string).
+# Raw inputs are read from scripts/icdb-data/<instrument>/<Key>/_raw_v*.html.
 # See README: "Internet Chord Database (ICDb) banjo imports" for source site and StaticCharts vs composite forms.
 # Usage: powershell -File scripts/generate-banjo-icdb-composite.ps1 -InstrumentFolder banjo-open-c -ReadableSuffix openCBanjo
 #        powershell -File scripts/generate-banjo-icdb-composite.ps1 -InstrumentFolder banjo-standard-c-drop-c -ReadableSuffix standardCDropCBanjo
@@ -21,6 +22,7 @@ param(
 $ErrorActionPreference = "Stop"
 $Root = Split-Path $PSScriptRoot -Parent
 $ChordsRoot = Join-Path $Root "src\db\$InstrumentFolder\chords"
+$RawRoot = Join-Path $Root "scripts\icdb-data\$InstrumentFolder"
 
 $RemainderToSuffix = [ordered]@{
     "m(add9)"       = "madd9"
@@ -204,10 +206,11 @@ function Format-PositionsJs($positionPairs) {
 
 foreach ($k in $Keys) {
     $dirPath = Join-Path $ChordsRoot $k.dir
+    $rawDirPath = Join-Path $RawRoot $k.dir
     if (-not (Test-Path $dirPath)) { New-Item -ItemType Directory -Path $dirPath -Force | Out-Null }
     $all = New-Object System.Collections.ArrayList
     foreach ($v in 1..4) {
-        $fp = Join-Path $dirPath "_raw_v$v.html"
+        $fp = Join-Path $rawDirPath "_raw_v$v.html"
         if (-not (Test-Path $fp)) { Write-Warning "Missing $fp"; continue }
         $html = Get-Content -Path $fp -Raw -Encoding UTF8
         foreach ($row in (Parse-CompositeHtmlFile $html $k.htmlRoot)) { [void]$all.Add($row) }
@@ -263,7 +266,8 @@ export default {
         "$lab " + ($parens -join ", ")
     }
     $txtName = if ($k.dir -eq "Ab") { "Abchords-readable-$ReadableSuffix.txt" } else { "$($k.dir)chords-readable-$ReadableSuffix.txt" }
-    Set-Content -Path (Join-Path $dirPath $txtName) -Value ($readableLines -join "`n") -Encoding UTF8
+    if (-not (Test-Path $rawDirPath)) { New-Item -ItemType Directory -Path $rawDirPath -Force | Out-Null }
+    Set-Content -Path (Join-Path $rawDirPath $txtName) -Value ($readableLines -join "`n") -Encoding UTF8
 
     Write-Host $k.dir "suffixes" $bySuffix.Count "parsed" $all.Count
 }

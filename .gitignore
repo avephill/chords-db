@@ -38,3 +38,6 @@ jspm_packages
 
 # ICDb composite merge review log (scripts/merge-banjo-composite-fingers.mjs)
 scripts/composite-finger-merge-review.txt
+
+# ICDb import workspace (raw HTML + optional readable debug outputs)
+scripts/icdb-data/

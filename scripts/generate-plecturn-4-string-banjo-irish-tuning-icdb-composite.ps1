@@ -1,4 +1,5 @@
 # Regenerate plecturn 4-string Irish tenor banjo chord modules from ICDb composite sprite tables (4 strings).
+# Reads raw HTML from scripts/icdb-data/plecturn-4-string-banjo-irish-tuning/<Key>/_raw_v*.html
 # Run from repo root: powershell -File scripts/generate-plecturn-4-string-banjo-irish-tuning-icdb-composite.ps1
 
 $ErrorActionPreference = "Stop"

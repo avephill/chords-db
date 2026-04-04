@@ -24,6 +24,7 @@ import { parseCompositeTableInnerHtml } from './parse-icdb-composite-table.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
+const RAW_ROOT = path.join(ROOT, 'scripts', 'icdb-data');
 
 const REMAINDER_TO_SUFFIX = [
   ['m(add9)', 'madd9'],
@@ -218,9 +219,11 @@ function collectCompositeFingerings(instrFolder, chordsRel, opts = { log: true }
 
   for (const kc of KEY_CONFIGS) {
     const keyDir = path.join(ROOT, chordsRel, kc.dir);
-    if (!fs.existsSync(keyDir)) continue;
+    const rawKeyDir = path.join(RAW_ROOT, instrFolder, kc.dir);
+    const sourceDir = fs.existsSync(rawKeyDir) ? rawKeyDir : keyDir;
+    if (!fs.existsSync(sourceDir)) continue;
     for (let v = 1; v <= 4; v++) {
-      const fp = path.join(keyDir, `_raw_v${v}.html`);
+      const fp = path.join(sourceDir, `_raw_v${v}.html`);
       if (!fs.existsSync(fp)) continue;
       const html = fs.readFileSync(fp, 'utf8');
       for (const blk of extractBlocks(html)) {

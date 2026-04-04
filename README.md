@@ -55,34 +55,43 @@ You can take a look of the current state of the database with this SVG rendering
 
 [![chords-db](https://raw.githubusercontent.com/tombatossals/react-chords/webpage/src/images/react-chords.png)](https://tombatossals.github.io/react-chords)
 
-## Internet Chord Database (ICDb) banjo imports
+## Internet Chord Database (ICDb) import workflow
 
-Chord pages for several **5-string banjo** tunings in this repo were built from **[Internet Chord Database](https://internetchorddatabase.com)** chart URLs (under `/ChordCharts/…`). Downloaded HTML is stored per key as `_raw_v1.html` … `_raw_v4.html` under `src/db/<instrument>/chords/<Key>/`, then generators emit the `*.js` chord modules.
+Several banjo-family instruments in this repo are imported from **[Internet Chord Database](https://internetchorddatabase.com)** (`/ChordCharts/...` pages).
 
-ICDb pages use two different voicing layouts; the import pipeline must match the page:
+### Canonical source policy
 
-| Form | What to look for in HTML | Generators / parsers |
+- `src/db/**` should contain canonical instrument modules only (`*.js`, key indexes, tests).
+- Import artifacts (`_raw_v*.html` and readable debug text) are **not** kept in `src/db`.
+- Import workspace is `scripts/icdb-data/<instrument>/<Key>/`.
+
+### Reusable import scripts
+
+| Purpose | Script |
+| --- | --- |
+| Download `_raw_v1..v4.html` for all keys | `scripts/download-icdb.ps1` (use thin instrument wrappers) |
+| Generate from StaticCharts `alt="..."` | `scripts/generate-icdb-staticcharts.ps1` |
+| Generate from composite `SingleFingering_v2` sprites | `scripts/generate-banjo-icdb-composite.ps1` + `scripts/parse-icdb-composite-table.mjs` |
+| Optional composite drift/finger merge report | `scripts/merge-banjo-composite-fingers.mjs` |
+
+### Instrument wrappers currently present
+
+| Instrument folder | Download wrapper | Generator wrapper |
 | --- | --- | --- |
-| **StaticCharts** | `StaticCharts\…png` images with `alt="…"` comma-separated fret list (and optional fingering) | `scripts/generate-banjo-open-g-from-icdb.ps1` and the other `generate-banjo-*-from-icdb.ps1` scripts (same pattern; `generate-banjo-open-g-from-icdb.mjs` is an optional Node copy of the open-G script). |
-| **Composite sprite grid** | `<table class="SingleFingering_v2">` built from `/images/M/*.png` cells | `scripts/generate-banjo-icdb-composite.ps1` (wrappers: `generate-banjo-open-c-icdb-composite.ps1`, `generate-banjo-standard-c-drop-c-icdb-composite.ps1`) plus `scripts/parse-icdb-composite-table.mjs`. |
-
-**Instruments currently wired to ICDb scripts** (see `scripts/download-banjo-*-icdb.ps1` and matching `generate-banjo-*`):
-
-| Instrument folder | Download script | Primary generator |
-| --- | --- | --- |
-| `banjo-open-c` | `download-banjo-open-c-icdb.ps1` | `generate-banjo-open-c-icdb-composite.ps1` (composite) |
-| `banjo-standard-c-drop-c` | `download-banjo-standard-c-drop-c-icdb.ps1` | `generate-banjo-standard-c-drop-c-icdb-composite.ps1` (composite). There is also `generate-banjo-standard-c-drop-c-from-icdb.ps1` for **StaticCharts-only** pages if you ever need that path. |
-| `banjo-open-g` | No dedicated downloader in `scripts/`; follow `download-banjo-open-c-icdb.ps1` against the [Open G tuning](https://internetchorddatabase.com/ChordCharts/5-String_Banjo_Open_G_Tuning/) chart URL | `generate-banjo-open-g-from-icdb.ps1` |
+| `banjo-open-c` | `download-banjo-open-c-icdb.ps1` | `generate-banjo-open-c-icdb-composite.ps1` |
+| `banjo-standard-c-drop-c` | `download-banjo-standard-c-drop-c-icdb.ps1` | `generate-banjo-standard-c-drop-c-icdb-composite.ps1` |
+| `banjo-open-g` | `download-banjo-open-g-icdb.ps1` | `generate-banjo-open-g-from-icdb.ps1` |
 | `banjo-d-f#-tuning` | `download-banjo-d-fsharp-tuning-icdb.ps1` | `generate-banjo-d-fsharp-tuning-from-icdb.ps1` |
 | `banjo-d-tuning` | `download-banjo-d-tuning-icdb.ps1` | `generate-banjo-d-tuning-from-icdb.ps1` |
-| `banjo-double-c` | `download-banjo-double-c-icdb.ps1` (and `download-banjo-double-c-remaining.ps1` if used) | `generate-banjo-double-c-from-icdb.ps1` |
+| `banjo-double-c` | `download-banjo-double-c-icdb.ps1` | `generate-banjo-double-c-from-icdb.ps1` |
 | `banjo-gmodal-mountain-minor-sawmill` | `download-banjo-gmodal-mountain-minor-icdb.ps1` | `generate-banjo-gmodal-mountain-minor-from-icdb.ps1` |
-| `plecturn-4-string-banjo-irish-tuning` (tenor Irish G D A E, 4 strings) | `download-plecturn-4-string-banjo-irish-tuning-icdb.ps1` | `generate-plecturn-4-string-banjo-irish-tuning-icdb-composite.ps1` ([Tenor (4-String) Banjo Irish Tuning](https://internetchorddatabase.com/ChordCharts/Tenor_(4-String)_Banjo_Irish_Tuning/); composite sprites, `-StringCount 4`) |
+| `plecturn-4-string-banjo-irish-tuning` | `download-plecturn-4-string-banjo-irish-tuning-icdb.ps1` | `generate-plecturn-4-string-banjo-irish-tuning-icdb-composite.ps1` |
 
-**Consistency check:** `node scripts/merge-banjo-composite-fingers.mjs` compares raw composite tables to existing chord files (fills missing `fingers` when fret strings match exactly; logs borderline `x`/open differences). It writes `scripts/composite-finger-merge-review.txt` (gitignored). If chord files were already generated from the same composite HTML, this usually updates nothing—only drift or hand-edits show up. For instruments whose chords came from **StaticCharts** alts, sprite-derived fret strings often do not match stored positions (different voicings or chart offset), so the script may update no files until those layouts are aligned in the generator.
+### Minimal process for adding a new ICDb instrument
 
-### Prompt for an agent adding a new ICDb instrument
-
-Copy and adapt the following (replace placeholders):
-
-> In `chords-db`, add a new instrument under `src/db/<instrument>/` using **Internet Chord Database** (`https://internetchorddatabase.com`). Find the chart URL for this tuning under `/ChordCharts/`. Add a PowerShell `scripts/download-banjo-<name>-icdb.ps1` that mirrors `scripts/download-banjo-open-c-icdb.ps1`: save per-key `_raw_v1.html`–`_raw_v4.html` into `src/db/<instrument>/chords/<Key>/`. Open saved HTML: if voicings use **StaticCharts** PNG `alt` text, extend the pattern in `generate-banjo-open-g-from-icdb.ps1`. If the page uses **SingleFingering_v2** sprite tables only, extend `generate-banjo-icdb-composite.ps1` (or add a wrapper like `generate-banjo-open-c-icdb-composite.ps1`) and use `parse-icdb-composite-table.mjs`. Register the instrument in `src/generate`, add tests, and run `yarn test` and `yarn build`.
+1. Add/adjust a download wrapper that calls `download-icdb.ps1`.
+2. Choose parser path from sample HTML:
+   - `StaticCharts` PNG `alt` rows -> `generate-icdb-staticcharts.ps1`
+   - `SingleFingering_v2` sprite tables -> `generate-banjo-icdb-composite.ps1`
+3. Add instrument module wiring (`src/db.js`, `types.d.ts`, instrument `src/db/<instrument>` files/tests).
+4. Run `npm test` and `npm run build`.
