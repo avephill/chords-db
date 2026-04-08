@@ -95,3 +95,19 @@ Several banjo-family instruments in this repo are imported from **[Internet Chor
    - `SingleFingering_v2` sprite tables -> `generate-banjo-icdb-composite.ps1`
 3. Add instrument module wiring (`src/db.js`, `types.d.ts`, instrument `src/db/<instrument>` files/tests).
 4. Run `npm test` and `npm run build`.
+
+## Scales-Chords scraping helper (slash chords and batch pages)
+
+For pages in the `https://www.scales-chords.com/chord/...` style, use:
+
+`npm run scrape:scales-chords -- --url "https://www.scales-chords.com/chord/banjo/D%5CF%2523" --key D --suffix "/F#"`
+
+Useful normalization rules built into `scripts/scrape-scales-chords.mjs`:
+
+- `D/_F#.js` file stem `"_F#"` -> suffix `"/F#"` (chord-db notation)
+- suffix `"/F#"` + key `D` -> URL chord path `D/F#`
+- labels like `D/F#` and `Dmaj/F#` are treated as the same target when filtering source voicings
+
+Batch write chord files under a key-folder tree:
+
+`npm run scrape:scales-chords -- --urls-file "scripts/scales-chords-urls.txt" --out-root "src/db/banjo-open-g/chords"`
