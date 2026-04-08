@@ -29,7 +29,9 @@ const props = [];
 for (const file of files) {
   const base = file.slice(0, -5);
   const id = idFromBase(base);
-  imports.push(`import * as ${id} from './${file}';`);
+  // Escape URL-fragment markers in import specifiers (e.g. '#' in filenames).
+  const importPath = file.replace(/#/g, '%23');
+  imports.push(`import * as ${id} from './${importPath}';`);
   props.push(`  ${JSON.stringify(base)}: ${id}`);
 }
 
