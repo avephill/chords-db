@@ -8,6 +8,7 @@
     "test": "jest src",
     "stdout": "babel-node src/generate",
     "build": "babel-node src/generate json && node scripts/sync-chords-db-lib.mjs",
+    "scrape:scales-chords": "node scripts/scrape-scales-chords.mjs",
     "precommit": "lint-staged",
     "prepublish": "npm run build",
     "prettier": "prettier --single-quote --write \"src/**/*.{js,jsx}\""
