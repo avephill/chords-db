@@ -1,4 +1,5 @@
-﻿export default {
+// sourcePage: https://www.scales-chords.com/chord/banjo/Cmaj9
+export default {
   key: 'C',
   suffix: 'maj9',
   positions: [
@@ -6,13 +7,8 @@
       frets: '02410',
     },
     {
-      frets: '0a9cc',
-    },
-    {
-      frets: 'a0900',
-    },
-    {
-      frets: 'a0989',
+      // sourceChart: http://www.scales-chords.com/chord-charts/banjo-Cmaj9-c-n-l-v-x-10-9-12-12.png
+      frets: 'xa9cc',
     },
   ],
 };

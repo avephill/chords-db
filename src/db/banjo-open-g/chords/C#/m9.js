@@ -1,4 +1,5 @@
-﻿export default {
+// sourcePage: https://www.scales-chords.com/chord/banjo/C%23m9
+export default {
   key: 'C#',
   suffix: 'm9',
   positions: [
@@ -6,13 +7,8 @@
       frets: 'b999d',
     },
     {
-      frets: 'bd999',
-    },
-    {
-      frets: 'xb9cd',
-    },
-    {
-      frets: 'xd9cb',
+      // sourceChart: http://www.scales-chords.com/chord-charts/banjo-Csm9-c-sharp-l-v-11-13-x-12-14.png
+      frets: 'bdxce',
     },
   ],
 };

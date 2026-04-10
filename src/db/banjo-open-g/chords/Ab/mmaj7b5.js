@@ -1,33 +1,31 @@
+// sourcePage: https://www.scales-chords.com/chord/banjo/Abmmaj7b5
 export default {
   key: 'Ab',
   suffix: 'mmaj7b5',
   positions: [
     {
-      frets: 'x6434',
-    },
-    {
-      frets: 'x6779',
-    },
-    {
-      frets: 'x6799',
-    },
-    {
+      // sourceChart: http://www.scales-chords.com/chord-charts/banjo-Abm7b5-a-flat-l-v-6-6-7-7-9.png
       frets: '66779',
     },
     {
-      frets: 'xx100',
-    },
-    {
+      // sourceChart: http://www.scales-chords.com/chord-charts/banjo-Abm7b5-a-flat-l-v-6-9-7-7-6.png
       frets: '69776',
     },
     {
-      frets: '99b9c',
+      // sourceChart: http://www.scales-chords.com/chord-charts/banjo-Abm7b5-a-flat-l-v-x-6-4-3-4.png
+      frets: 'x6434',
     },
     {
-      frets: '04100',
+      // sourceChart: http://www.scales-chords.com/chord-charts/banjo-Abm7b5-a-flat-l-v-x-6-7-7-9.png
+      frets: 'x6779',
     },
     {
-      frets: '40100',
+      // sourceChart: http://www.scales-chords.com/chord-charts/banjo-Abm7b5-a-flat-l-v-x-6-7-9-9.png
+      frets: 'x6799',
+    },
+    {
+      // sourceChart: http://www.scales-chords.com/chord-charts/banjo-Abm7b5-a-flat-l-v-x-x-1-0-0.png
+      frets: 'xx100',
     },
   ],
 };

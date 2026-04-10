@@ -1,18 +1,23 @@
+// sourcePage: https://www.scales-chords.com/chord/banjo/C%23m%5CBb
 export default {
   key: 'C#',
   suffix: 'm/Bb',
   positions: [
     {
-      frets: 'xa98a',
+      // sourceChart: http://www.scales-chords.com/chord-charts/banjo-Csm_Bb-c-sharp-l-v-8-8-9-9-11.png
+      frets: '8899b',
     },
     {
-      frets: 'xx555',
+      // sourceChart: http://www.scales-chords.com/chord-charts/banjo-Csm_Bb-c-sharp-l-v-8-11-9-9-8.png
+      frets: '8b998',
     },
     {
-      frets: 'x2012',
+      // sourceChart: http://www.scales-chords.com/chord-charts/banjo-Csm_Bb-c-sharp-l-v-x-8-6-5-6.png
+      frets: 'x8656',
     },
     {
-      frets: '55555',
+      // sourceChart: http://www.scales-chords.com/chord-charts/banjo-Csm_Bb-c-sharp-l-v-x-8-9-9-11.png
+      frets: 'x899b',
     },
   ],
 };

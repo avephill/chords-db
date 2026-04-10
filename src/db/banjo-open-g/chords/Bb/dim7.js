@@ -1,4 +1,5 @@
-﻿export default {
+// sourcePage: https://www.scales-chords.com/chord/banjo/Bbdim7
+export default {
   key: 'Bb',
   suffix: 'dim7',
   positions: [
@@ -6,13 +7,8 @@
       frets: '02325',
     },
     {
-      frets: '08655',
-    },
-    {
+      // sourceChart: https://www.scales-chords.com/chord-charts/banjo-Bbdim7-b-flat-l-v-8-5-6-5-5.png
       frets: '85655',
-    },
-    {
-      frets: 'x8655',
     },
   ],
 };

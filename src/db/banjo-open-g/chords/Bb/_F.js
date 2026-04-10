@@ -1,27 +1,11 @@
+// sourcePage: https://www.scales-chords.com/chord/banjo/Bb%5CF
 export default {
   key: 'Bb',
   suffix: '/F',
   positions: [
     {
+      // sourceChart: http://www.scales-chords.com/chord-charts/banjo-Bb_F-b-flat-l-v-3-3-3-3-3.png
       frets: '33333',
-    },
-    {
-      frets: '30330',
-    },
-    {
-      frets: '333x0',
-    },
-    {
-      frets: 'xxabc',
-    },
-    {
-      frets: '303x3',
-    },
-    {
-      frets: 'x8768',
-    },
-    {
-      frets: '00333',
     },
   ],
 };

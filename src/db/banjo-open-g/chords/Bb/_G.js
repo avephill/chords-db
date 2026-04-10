@@ -1,24 +1,11 @@
+// sourcePage: https://www.scales-chords.com/chord/banjo/Bb%5CG
 export default {
   key: 'Bb',
   suffix: '/G',
   positions: [
     {
+      // sourceChart: http://www.scales-chords.com/chord-charts/banjo-Bb_G-b-flat-l-v-5-3-3-3-3.png
       frets: '53333',
-    },
-    {
-      frets: 'x5333',
-    },
-    {
-      frets: '55768',
-    },
-    {
-      frets: '553x3',
-    },
-    {
-      frets: '533x5',
-    },
-    {
-      frets: 'x5365',
     },
   ],
 };

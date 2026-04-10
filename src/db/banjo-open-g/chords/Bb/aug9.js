@@ -1,30 +1,11 @@
+// sourcePage: https://www.scales-chords.com/chord/banjo/Bbaug9
 export default {
   key: 'Bb',
   suffix: 'aug9',
   positions: [
     {
+      // sourceChart: http://www.scales-chords.com/chord-charts/banjo-Bbaug9-b-flat-l-v-8-6-7-7-6.png
       frets: '86776',
-    },
-    {
-      frets: '88b98',
-    },
-    {
-      frets: 'x8576',
-    },
-    {
-      frets: 'x8796',
-    },
-    {
-      frets: 'x8798',
-    },
-    {
-      frets: 'x879a',
-    },
-    {
-      frets: '88x9a',
-    },
-    {
-      frets: '8ax98',
     },
   ],
 };

@@ -1,30 +1,11 @@
+// sourcePage: https://www.scales-chords.com/chord/banjo/Bbmaj11
 export default {
   key: 'Bb',
   suffix: 'maj11',
   positions: [
     {
+      // sourceChart: http://www.scales-chords.com/chord-charts/banjo-Bbmaj11-b-flat-l-v-8-8-8-10-8.png
       frets: '888a8',
-    },
-    {
-      frets: '8a8aa',
-    },
-    {
-      frets: '8a8b8',
-    },
-    {
-      frets: '888ba',
-    },
-    {
-      frets: 'x8867',
-    },
-    {
-      frets: 'xx340',
-    },
-    {
-      frets: 'xx311',
-    },
-    {
-      frets: 'xx331',
     },
   ],
 };

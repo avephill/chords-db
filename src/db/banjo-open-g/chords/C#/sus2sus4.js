@@ -1,12 +1,39 @@
+// sourcePage: https://www.scales-chords.com/chord/banjo/C%23sus2sus4
 export default {
   key: 'C#',
   suffix: 'sus2sus4',
   positions: [
     {
-      frets: 'xa98a',
+      // sourceChart: http://www.scales-chords.com/chord-charts/banjo-Cs9sus4add(b11)-c-sharp-l-v-11-9-11-9-9.png
+      frets: 'b9b99',
     },
     {
-      frets: 'xx555',
+      // sourceChart: http://www.scales-chords.com/chord-charts/banjo-Cs9sus4add(b11)-c-sharp-l-v-11-9-11-9-11.png
+      frets: 'b9b9b',
+    },
+    {
+      // sourceChart: http://www.scales-chords.com/chord-charts/banjo-Cs9sus4add(b11)-c-sharp-l-v-11-11-11-9-9.png
+      frets: 'bbb99',
+    },
+    {
+      // sourceChart: http://www.scales-chords.com/chord-charts/banjo-Cs9sus4add(b11)-c-sharp-l-v-11-11-11-12-11.png
+      frets: 'bbbcb',
+    },
+    {
+      // sourceChart: http://www.scales-chords.com/chord-charts/banjo-Cs9sus4add(b11)-c-sharp-l-v-x-11-11-14-13.png
+      frets: 'xbbed',
+    },
+    {
+      // sourceChart: http://www.scales-chords.com/chord-charts/banjo-Cs9sus4add(b11)-c-sharp-l-v-x-x-6-4-4.png
+      frets: 'xx644',
+    },
+    {
+      // sourceChart: http://www.scales-chords.com/chord-charts/banjo-Cs9sus4add(b11)-c-sharp-l-v-x-x-6-7-6.png
+      frets: 'xx676',
+    },
+    {
+      // sourceChart: http://www.scales-chords.com/chord-charts/banjo-Cs9sus4add(b11)-c-sharp-l-v-x-x-6-7-9.png
+      frets: 'xx679',
     },
   ],
 };

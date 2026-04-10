@@ -1,24 +1,11 @@
+// sourcePage: https://www.scales-chords.com/chord/banjo/Bbm9%2FC%23
 export default {
   key: 'Bb',
   suffix: 'm9/C#',
   positions: [
     {
-      frets: 'aaabb',
-    },
-    {
-      frets: 'ababa',
-    },
-    {
-      frets: '8aaxb',
-    },
-    {
+      // sourceChart: https://www.scales-chords.com/chord-charts/banjo-Bbm9_Db-b-flat-l-v-x-11-13-11-10.png
       frets: 'xbdba',
-    },
-    {
-      frets: 'x3313',
-    },
-    {
-      frets: 'x6568',
     },
   ],
 };

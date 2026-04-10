@@ -1,4 +1,5 @@
-﻿export default {
+// sourcePage: https://www.scales-chords.com/chord/banjo/Am11
+export default {
   key: 'A',
   suffix: 'm11',
   positions: [
@@ -6,13 +7,16 @@
       frets: '07580',
     },
     {
-      frets: '0778a',
+      // sourceChart: http://www.scales-chords.com/chord-charts/banjo-Am11-a-n-l-v-7-7-7-8-10.png
+      frets: '7778a',
     },
     {
-      frets: '70555',
+      // sourceChart: http://www.scales-chords.com/chord-charts/banjo-Am11-a-n-l-v-7-10-7-8-7.png
+      frets: '7a787',
     },
     {
-      frets: '70505',
+      // sourceChart: http://www.scales-chords.com/chord-charts/banjo-Am11-a-n-l-v-7-10-7-8-9.png
+      frets: '7a789',
     },
   ],
 };

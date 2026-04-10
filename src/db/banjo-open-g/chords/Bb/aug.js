@@ -1,4 +1,5 @@
-﻿export default {
+// sourcePage: https://www.scales-chords.com/chord/banjo/Bbaug
+export default {
   key: 'Bb',
   suffix: 'aug',
   positions: [
@@ -6,13 +7,8 @@
       frets: '88770',
     },
     {
-      frets: 'x4334',
-    },
-    {
+      // sourceChart: https://www.scales-chords.com/chord-charts/banjo-Bbaug-b-flat-l-v-x-8-7-7-8.png
       frets: 'x8778',
-    },
-    {
-      frets: 'xx334',
     },
   ],
 };

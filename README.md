@@ -111,3 +111,12 @@ Useful normalization rules built into `scripts/scrape-scales-chords.mjs`:
 Batch write chord files under a key-folder tree:
 
 `npm run scrape:scales-chords -- --urls-file "scripts/scales-chords-urls.txt" --out-root "src/db/banjo-open-g/chords"`
+
+### Verifying frets against Scales-Chords (banjo)
+
+`npm run verify:scales-chords -- --file "src/db/banjo-open-g/chords/A/_F#.js"`
+
+- Slash chords in bookmarks use a **single path segment** with a backslash between key and bass, URL-encoded (example: `A/F#` → `.../chord/banjo/A%5CF%23`). The verifier builds that form by default (`scripts/verify-scales-chords-frets.mjs`).
+- If the page you want uses a **different** path shape (e.g. `.../banjo/A/F%23`), pass it explicitly: `--url "https://www.scales-chords.com/chord/banjo/A/F%23"`.
+- Slash-chord PNGs use a letter + **`s`** for sharp bass notes: **`_Fs`**, **`_Cs`**, **`_Gs`** (e.g. `banjo-A_Fs-…`, `banjo-Am_Cs-…`). Natural bass uses the plain letter + hyphen (e.g. `banjo-A_F-…`, `banjo-A_C-…`). The fetched chord page may still embed only natural-bass images for some `/F#` URLs; the verifier can fall back to `// sourceChart` lines when those URLs use the `…s` form.
+- Extension chords like **`9#11`**, **`7#9`**, **`maj7#5`** keep the usual stems in filenames (`banjo-A9-…`, `banjo-A7-…`, `banjo-Amaj7-…`); the sharp is in the chord **page** URL (`A9%2311`, `A7%239`, `Amaj7%235`).

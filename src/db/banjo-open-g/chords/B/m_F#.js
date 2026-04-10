@@ -1,24 +1,31 @@
+// sourcePage: https://www.scales-chords.com/chord/banjo/Bm%5CF%23
 export default {
   key: 'B',
   suffix: 'm/F#',
   positions: [
     {
-      frets: '34400',
+      // sourceChart: https://www.scales-chords.com/chord-charts/banjo-Bm_Fs-b-n-l-v-4-0-4-0-4.png
+      frets: '40404',
     },
     {
-      frets: '34433',
+      // sourceChart: https://www.scales-chords.com/chord-charts/banjo-Bm_Fs-b-n-l-v-4-0-4-3-0.png
+      frets: '40430',
     },
     {
-      frets: '33434',
+      // sourceChart: https://www.scales-chords.com/chord-charts/banjo-Bm_Fs-b-n-l-v-4-0-4-3-4.png
+      frets: '40434',
     },
     {
-      frets: '33433',
+      // sourceChart: https://www.scales-chords.com/chord-charts/banjo-Bm_Fs-b-n-l-v-4-4-4-0-0.png
+      frets: '44400',
     },
     {
-      frets: 'x3400',
+      // sourceChart: https://www.scales-chords.com/chord-charts/banjo-Bm_Fs-b-n-l-v-x-4-4-3-4.png
+      frets: 'x4434',
     },
     {
-      frets: 'xxacc',
+      // sourceChart: https://www.scales-chords.com/chord-charts/banjo-Bm_Fs-b-n-l-v-x-x-11-12-12.png
+      frets: 'xxbcc',
     },
   ],
 };

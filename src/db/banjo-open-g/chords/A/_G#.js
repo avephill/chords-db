@@ -1,18 +1,23 @@
+// sourcePage: https://www.scales-chords.com/chord/banjo/A%5CG%23
 export default {
   key: 'A',
   suffix: '/G#',
   positions: [
     {
-      frets: '57655',
+      // sourceChart: https://www.scales-chords.com/chord-charts/banjo-A_Gs-a-n-l-v-6-6-6-9-7.png
+      frets: '66697',
     },
     {
-      frets: '55657',
+      // sourceChart: https://www.scales-chords.com/chord-charts/banjo-A_Gs-a-n-l-v-6-7-6-9-6.png
+      frets: '67696',
     },
     {
-      frets: '52222',
+      // sourceChart: https://www.scales-chords.com/chord-charts/banjo-A_Gs-a-n-l-v-6-7-6-x-7.png
+      frets: '676x7',
     },
     {
-      frets: '55222',
+      // sourceChart: https://www.scales-chords.com/chord-charts/banjo-A_Gs-a-n-l-v-x-6-6-5-7.png
+      frets: 'x6657',
     },
   ],
 };
